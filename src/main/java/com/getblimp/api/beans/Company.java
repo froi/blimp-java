@@ -2,6 +2,7 @@ package com.getblimp.api.beans;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,74 +12,123 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 public class Company {
-    private ArrayList<?> company_users = null;
-    private Calendar date_created = null;
-    private Calendar date_modified = null;
-    private int id = 0;
-    private String image_url = null;
-    private String name = null;
-    private String resource_url = null;
-    private String slug = null;
-    private int used_projects = 0;
-    private String used_storage = null;
-    public ArrayList<?> getCompany_users() {
-        return company_users;
+    private List<User> companyUsers;
+    private Calendar dateCreated;
+    private Calendar dateModified;
+    private Integer id;
+    private String imageUrl;
+    private String name;
+    private String resourceUrl;
+    private String slug;
+    private Integer usedProjects;
+    private String usedStorage;
+
+    public Company(Builder b) {
+        this.companyUsers = b.companyUsers;
+        this.dateCreated = b.dateCreated;
+        this.dateModified = b.dateModified;
+        this.id = b.id;
+        this.imageUrl = b.imageUrl;
+        this.name = b.name;
+        this.resourceUrl = b.resourceUrl;
+        this.slug = b.slug;
+        this.usedProjects = b.usedProjects;
+        this.usedStorage = b.usedStorage;
     }
-    public void setCompany_users(ArrayList<?> company_users) {
-        this.company_users = company_users;
+    public List<User> getCompanyUsers() {
+        return companyUsers;
     }
-    public Calendar getDate_created() {
-        return date_created;
+
+    public Calendar getDateCreated() {
+        return dateCreated;
     }
-    public void setDate_created(Calendar date_created) {
-        this.date_created = date_created;
+
+    public Calendar getDateModified() {
+        return dateModified;
     }
-    public Calendar getDate_modified() {
-        return date_modified;
-    }
-    public void setDate_modified(Calendar date_modified) {
-        this.date_modified = date_modified;
-    }
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public String getImageUrl() {
+        return imageUrl;
     }
-    public String getImage_url() {
-        return image_url;
-    }
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
-    }
+
     public String getName() {
         return name;
     }
-    public void setName(String name) {
-        this.name = name;
+
+    public String getResourceUrl() {
+        return resourceUrl;
     }
-    public String getResource_url() {
-        return resource_url;
-    }
-    public void setResource_url(String resource_url) {
-        this.resource_url = resource_url;
-    }
+
     public String getSlug() {
         return slug;
     }
-    public void setSlug(String slug) {
-        this.slug = slug;
+
+    public Integer getUsedProjects() {
+        return usedProjects;
     }
-    public int getUsed_projects() {
-        return used_projects;
+
+    public String getUsedStorage() {
+        return usedStorage;
     }
-    public void setUsed_projects(int used_projects) {
-        this.used_projects = used_projects;
-    }
-    public String getUsed_storage() {
-        return used_storage;
-    }
-    public void setUsed_storage(String used_storage) {
-        this.used_storage = used_storage;
+
+    public static class Builder {
+        private List<User> companyUsers;
+        private Calendar dateCreated;
+        private Calendar dateModified;
+        private Integer id;
+        private String imageUrl;
+        private String name;
+        private String resourceUrl;
+        private String slug;
+        private Integer usedProjects;
+        private String usedStorage;
+
+        public Builder companyUsers(List<User> companyUsers) {
+            this.companyUsers = companyUsers;
+            return this;
+        }
+        public Builder dateCreated(Calendar dateCreated) {
+            this.dateCreated = dateCreated;
+            return this;
+        }
+        public Builder dateModified(Calendar dateModified) {
+            this.dateModified = dateModified;
+            return this;
+        }
+        public Builder id(Integer id) {
+            this.id = id;
+            return this;
+        }
+        public Builder imageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder resourceUrl(String resourceUrl) {
+            this.resourceUrl = resourceUrl;
+            return this;
+        }
+        public Builder slug(String slug) {
+            this.slug = slug;
+            return this;
+        }
+        public Builder usedProjects(Integer usedProjects) {
+            this.usedProjects = usedProjects;
+            return this;
+        }
+        public Builder usedStorage(String usedStorage) {
+            this.usedStorage = usedStorage;
+            return this;
+        }
+        public Company build() {
+            return new Company(this);
+        }
     }
 }

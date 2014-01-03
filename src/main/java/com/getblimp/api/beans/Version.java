@@ -12,87 +12,135 @@ import java.util.Calendar;
 
 public class Version {
 	private String content = null;
-	private String content_type = null;
-    private Calendar date_created = null;
-	private Calendar date_modified = null;
+	private String contentType = null;
+    private Calendar dateCreated = null;
+	private Calendar dateModified = null;
     private int height = 0;
     private int id =  0;
     private String name = null;
-    private String preview_url = null;
-    private String resource_uri = null;
+    private String previewUrl = null;
+    private String resourceUri = null;
     private int size = 0;
-    private String thumbnail_url = null;
+    private String thumbnailUrl = null;
     private int width = 80;
+
+    public Version(Builder b) {
+        this.content = b.content;
+        this.contentType = b.contentType;
+        this.dateCreated = b.dateCreated;
+        this.dateModified = b.dateModified;
+        this.height = b.height;
+        this.id = b.id;
+        this.name = b.name;
+        this.previewUrl = b.previewUrl;
+        this.resourceUri = b.resourceUri;
+        this.size = b.size;
+        this.thumbnailUrl = b.thumbnailUrl;
+        this.width = b.width;
+    }
 	public String getContent() {
 		return content;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public String getContentType() {
+		return contentType;
 	}
-	public String getContent_type() {
-		return content_type;
+	public Calendar getDateCreated() {
+		return dateCreated;
 	}
-	public void setContent_type(String content_type) {
-		this.content_type = content_type;
-	}
-	public Calendar getDate_created() {
-		return date_created;
-	}
-	public void setDate_created(Calendar date_created) {
-		this.date_created = date_created;
-	}
-	public Calendar getDate_modified() {
-		return date_modified;
-	}
-	public void setDate_modified(Calendar date_modified) {
-		this.date_modified = date_modified;
+	public Calendar getDateModified() {
+		return dateModified;
 	}
 	public int getHeight() {
 		return height;
 	}
-	public void setHeight(int height) {
-		this.height = height;
-	}
 	public int getId() {
 		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public String getPreviewUrl() {
+		return previewUrl;
 	}
-	public String getPreview_url() {
-		return preview_url;
-	}
-	public void setPreview_url(String preview_url) {
-		this.preview_url = preview_url;
-	}
-	public String getResource_uri() {
-		return resource_uri;
-	}
-	public void setResource_uri(String resource_uri) {
-		this.resource_uri = resource_uri;
+	public String getResourceUri() {
+		return resourceUri;
 	}
 	public int getSize() {
 		return size;
 	}
-	public void setSize(int size) {
-		this.size = size;
-	}
-	public String getThumbnail_url() {
-		return thumbnail_url;
-	}
-	public void setThumbnail_url(String thumbnail_url) {
-		this.thumbnail_url = thumbnail_url;
+	public String getThumbnailUrl() {
+		return thumbnailUrl;
 	}
 	public int getWidth() {
 		return width;
 	}
-	public void setWidth(int width) {
-		this.width = width;
-	}
+
+    public static class Builder {
+
+        private String content = null;
+        private String contentType = null;
+        private Calendar dateCreated = null;
+        private Calendar dateModified = null;
+        private int height = 0;
+        private int id =  0;
+        private String name = null;
+        private String previewUrl = null;
+        private String resourceUri = null;
+        private int size = 0;
+        private String thumbnailUrl = null;
+        private int width = 80;
+
+        public Builder content(String content) {
+            this.content = content;
+            return this;
+        }
+        public Builder contentType(String contentType) {
+            this.contentType = contentType;
+            return this;
+        }
+        public Builder dateCreated(Calendar dateCreated) {
+            this.dateCreated = dateCreated;
+            return this;
+        }
+        public Builder dateModified(Calendar dateModified) {
+            this.dateModified = dateModified;
+            return this;
+        }
+        public Builder height(int height) {
+            this.height = height;
+            return this;
+        }
+        public Builder id(int id ) {
+            this.id = id;
+            return this;
+        }
+        public Builder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder previewUrl(String previewUrl) {
+            this.previewUrl = previewUrl;
+            return this;
+        }
+        public Builder resourceUri(String resourceUri) {
+            this.resourceUri = resourceUri;
+            return this;
+        }
+        public Builder size(int size) {
+            this.size = size;
+            return this;
+        }
+        public Builder thumbnailUrl(String thumbnailUrl) {
+            this.thumbnailUrl = thumbnailUrl;
+            return this;
+        }
+        public Builder width(int width) {
+            this.width = width;
+            return this;
+        }
+
+        public Version build() {
+            return new Version(this);
+        }
+    }
 }

@@ -11,27 +11,44 @@ import java.util.Calendar;
  */
 
 public class Profile {
-	private String aim_username = null;
+	private String aimUsername = null;
 	private String avatar = null;
-	private Calendar date_created = null;
-	private Calendar date_modified = null;
-	private String email_notifications = null;
-	private String facebook_id= null;
-	private String gravatar_url = null;
-	private String gtalk_username = null;
-	private String job_title = null;
-	private String last_ip = null;
+	private Calendar dateCreated = null;
+	private Calendar dateModified = null;
+	private String emailNotifications = null;
+	private String facebookId = null;
+	private String gravatarUrl = null;
+	private String gtalkUsername = null;
+	private String jobTitle = null;
+	private String lastIp = null;
 	private String phone = null;
-	private String skype_username = null;
+	private String skypeUsername = null;
 	private String timezone = null;
-	private String twitter_username = null;
-	private String windows_live_id = null;
+	private String twitterUsername = null;
+	private String windowsLiveId = null;
 
-	public String getAim_username() {
-		return aim_username;
+    public Profile(Builder b) {
+        this.aimUsername = b.aimUsername;
+        this.avatar = b.avatar;
+        this.dateCreated = b.dateCreated;
+        this.dateModified = b.dateModified;
+        this.emailNotifications = b.emailNotifications;
+        this.facebookId = b.facebookId;
+        this.gravatarUrl = b.gravatarUrl;
+        this.gtalkUsername = b.gtalkUsername;
+        this.jobTitle = b.jobTitle;
+        this.lastIp = b.lastIp;
+        this.phone = b.phone;
+        this.skypeUsername = b.skypeUsername;
+        this.timezone = b.timezone;
+        this.twitterUsername = b.twitterUsername;
+        this.windowsLiveId = b.windowsLiveId;
+    }
+	public String getAimUsername() {
+		return aimUsername;
 	}
-	public void setAim_username(String aim_username) {
-		this.aim_username = aim_username;
+	public void setAimUsername(String aimUsername) {
+		this.aimUsername = aimUsername;
 	}
 	public String getAvatar() {
 		return avatar;
@@ -39,53 +56,53 @@ public class Profile {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	public Calendar getDate_created() {
-		return date_created;
+	public Calendar getDateCreated() {
+		return dateCreated;
 	}
-	public void setDate_created(Calendar date_created) {
-		this.date_created = date_created;
+	public void setDateCreated(Calendar dateCreated) {
+		this.dateCreated = dateCreated;
 	}
-	public Calendar getDate_modified() {
-		return date_modified;
+	public Calendar getDateModified() {
+		return dateModified;
 	}
-	public void setDate_modified(Calendar date_modified) {
-		this.date_modified = date_modified;
+	public void setDateModified(Calendar dateModified) {
+		this.dateModified = dateModified;
 	}
-	public String getEmail_notifications() {
-		return email_notifications;
+	public String getEmailNotifications() {
+		return emailNotifications;
 	}
-	public void setEmail_notifications(String email_notifications) {
-		this.email_notifications = email_notifications;
+	public void setEmailNotifications(String emailNotifications) {
+		this.emailNotifications = emailNotifications;
 	}
-	public String getFacebook_id() {
-		return facebook_id;
+	public String getFacebookId() {
+		return facebookId;
 	}
-	public void setFacebook_id(String facebook_id) {
-		this.facebook_id = facebook_id;
+	public void setFacebookId(String facebookId) {
+		this.facebookId = facebookId;
 	}
-	public String getGravatar_url() {
-		return gravatar_url;
+	public String getGravatarUrl() {
+		return gravatarUrl;
 	}
-	public void setGravatar_url(String gravatar_url) {
-		this.gravatar_url = gravatar_url;
+	public void setGravatarUrl(String gravatarUrl) {
+		this.gravatarUrl = gravatarUrl;
 	}
-	public String getGtalk_username() {
-		return gtalk_username;
+	public String getGtalkUsername() {
+		return gtalkUsername;
 	}
-	public void setGtalk_username(String gtalk_username) {
-		this.gtalk_username = gtalk_username;
+	public void setGtalkUsername(String gtalkUsername) {
+		this.gtalkUsername = gtalkUsername;
 	}
-	public String getJob_title() {
-		return job_title;
+	public String getJobTitle() {
+		return jobTitle;
 	}
-	public void setJob_title(String job_title) {
-		this.job_title = job_title;
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
 	}
-	public String getLast_ip() {
-		return last_ip;
+	public String getLastIp() {
+		return lastIp;
 	}
-	public void setLast_ip(String last_ip) {
-		this.last_ip = last_ip;
+	public void setLastIp(String lastIp) {
+		this.lastIp = lastIp;
 	}
 	public String getPhone() {
 		return phone;
@@ -93,11 +110,11 @@ public class Profile {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getSkype_username() {
-		return skype_username;
+	public String getSkypeUsername() {
+		return skypeUsername;
 	}
-	public void setSkype_username(String skype_username) {
-		this.skype_username = skype_username;
+	public void setSkypeUsername(String skypeUsername) {
+		this.skypeUsername = skypeUsername;
 	}
 	public String getTimezone() {
 		return timezone;
@@ -105,16 +122,108 @@ public class Profile {
 	public void setTimezone(String timezone) {
 		this.timezone = timezone;
 	}
-	public String getTwitter_username() {
-		return twitter_username;
+	public String getTwitterUsername() {
+		return twitterUsername;
 	}
-	public void setTwitter_username(String twitter_username) {
-		this.twitter_username = twitter_username;
+	public void setTwitterUsername(String twitterUsername) {
+		this.twitterUsername = twitterUsername;
 	}
-	public String getWindows_live_id() {
-		return windows_live_id;
+	public String getWindowsLiveId() {
+		return windowsLiveId;
 	}
-	public void setWindows_live_id(String windows_live_id) {
-		this.windows_live_id = windows_live_id;
+	public void setWindowsLiveId(String windowsLiveId) {
+		this.windowsLiveId = windowsLiveId;
 	}
+    public static class Builder {
+        private String aimUsername = null;
+        private String avatar = null;
+        private Calendar dateCreated = null;
+        private Calendar dateModified = null;
+        private String emailNotifications = null;
+        private String facebookId = null;
+        private String gravatarUrl = null;
+        private String gtalkUsername = null;
+        private String jobTitle = null;
+        private String lastIp = null;
+        private String phone = null;
+        private String skypeUsername = null;
+        private String timezone = null;
+        private String twitterUsername = null;
+        private String windowsLiveId = null;
+
+        public Builder aimUsername(String aimUsername) {
+            this.aimUsername = aimUsername;
+            return this;
+        }
+
+        public Builder avatar(String avatar) {
+            this.avatar = avatar;
+            return this;
+        }
+
+        public Builder dateCreated(Calendar dateCreated) {
+            this.dateCreated = dateCreated;
+            return this;
+        }
+
+        public Builder dateModified(Calendar dateModified) {
+            this.dateModified = dateModified;
+            return this;
+        }
+
+        public Builder emailNotifications(String emailNotifications) {
+            this.emailNotifications = emailNotifications;
+            return this;
+        }
+
+        public Builder facebookId(String facebookId) {
+            this.facebookId = facebookId;
+            return this;
+        }
+
+        public Builder gravatarUrl(String gravatarUrl) {
+            this.gravatarUrl = gravatarUrl;
+            return this;
+        }
+
+        public Builder gtalkUsername(String gtalkUsername) {
+            this.gtalkUsername = gtalkUsername;
+            return this;
+        }
+
+        public Builder jobTitle(String jobTitle) {
+            this.jobTitle = jobTitle;
+            return this;
+        }
+
+        public Builder lastIp(String lastIp) {
+            this.lastIp = lastIp;
+            return this;
+        }
+
+        public Builder phone(String phone) {
+            this.phone = phone;
+            return this;
+        }
+
+        public Builder skypeUsername(String skypeUsername) {
+            this.skypeUsername = skypeUsername;
+            return this;
+        }
+
+        public Builder timezone(String timezone) {
+            this.timezone = timezone;
+            return this;
+        }
+
+        public Builder twitterUsername(String twitterUsername) {
+            this.twitterUsername = twitterUsername;
+            return this;
+        }
+
+        public Builder windowsLiveId(String windowsLiveId) {
+            this.windowsLiveId = windowsLiveId;
+            return this;
+        }
+    }
 }
