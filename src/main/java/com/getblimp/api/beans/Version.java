@@ -1,4 +1,8 @@
+/* github_apache_lic */
+
 package com.getblimp.api.beans;
+
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 
@@ -10,7 +14,7 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 
-public class Version {
+public class Version extends BlimpObject {
 	private String content = null;
 	private String contentType = null;
     private Calendar dateCreated = null;
@@ -24,7 +28,10 @@ public class Version {
     private String thumbnailUrl = null;
     private int width = 80;
 
-    public Version(Builder b) {
+    public Version() {
+        super();
+    }
+    private Version(Builder b) {
         this.content = b.content;
         this.contentType = b.contentType;
         this.dateCreated = b.dateCreated;
@@ -74,7 +81,11 @@ public class Version {
 	public int getWidth() {
 		return width;
 	}
-
+    @Override
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
     public static class Builder {
 
         private String content = null;

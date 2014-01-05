@@ -1,3 +1,5 @@
+/* github_apache_lic */
+
 package com.getblimp.api.utils;
 
 /**

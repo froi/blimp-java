@@ -1,21 +1,4 @@
-/*******************************************************************************
-* Copyright 2013 Froilan Irizarry
-* http://froilanirizarry.me
-* https://github.com/froi
-* 
-* Code can be downloaded, forked, or revied at: 
-*     https://github.com/froi/blimp-java
-*
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not 
-* use this file except in compliance with the License. You may obtain a copy of 
-* the License at:
-*     http://www.apache.org/licenses/LICENSE-2.0
-* Unless required by applicable law or agreed to in writing, software 
-* distributed under the License is distributed on an "AS IS" BASIS, WITHOUT 
-* WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the 
-* License for the specific language governing permissions and limitations under 
-* the License.
-*******************************************************************************/
+/* github_apache_lic */
 
 package com.getblimp.api.client;
 
@@ -27,17 +10,18 @@ package com.getblimp.api.client;
  * To change this template use File | Settings | File Templates.
  */
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import com.getblimp.api.utils.BlimpHttpHeaders;
 import com.getblimp.api.utils.BlimpResources;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Blimp {
 	private String userName = null;
@@ -64,7 +48,7 @@ public class Blimp {
 		// Response output variable
 		StringBuilder output = null;
 
-		DefaultHttpClient client = new DefaultHttpClient();
+        CloseableHttpClient client = HttpClients.createDefault();
 		
 		//Set http get object and headers
 		HttpGet getRequest = new HttpGet(url.toString());
@@ -94,7 +78,8 @@ public class Blimp {
 				output.append(tmpOutput);
 			}
 
-			client.getConnectionManager().shutdown();
+			client.close();
+
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -114,9 +99,9 @@ public class Blimp {
 		// Response output variable
 		StringBuilder output = null;
 
-		DefaultHttpClient client = new DefaultHttpClient();
-		
-		//Set http get object and headers
+        CloseableHttpClient client = HttpClients.createDefault();
+
+        //Set http get object and headers
 		HttpGet getRequest = new HttpGet(url.toString());
 		getRequest.addHeader(BlimpHttpHeaders.AUTHORIZATION.getValue(), 
 				"ApiKey " + this.userName + ":" + this.apiKey);
@@ -143,8 +128,8 @@ public class Blimp {
 			while ((tmpOutput = br.readLine()) != null) {
 				output.append(tmpOutput);
 			}
+            client.close();
 
-			client.getConnectionManager().shutdown();
 		} catch (ClientProtocolException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

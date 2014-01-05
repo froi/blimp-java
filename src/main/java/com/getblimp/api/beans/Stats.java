@@ -1,4 +1,8 @@
+/* github_apache_lic */
+
 package com.getblimp.api.beans;
+
+import com.google.gson.Gson;
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,14 +11,17 @@ package com.getblimp.api.beans;
  * Time: 20:43
  * To change this template use File | Settings | File Templates.
  */
-public class Stats {
+public class Stats extends BlimpObject {
     private Integer goalsActive;
     private Integer goalsAll;
     private Integer goalsDone;
     private Integer goalsInactive;
     private Integer goalsReview;
-    private Integer progress;
+    private Float progress;
 
+    public Stats() {
+        super();
+    }
     private Stats(Builder b) {
         this.goalsActive = b.goalsActive;
         this.goalsAll = b.goalsAll;
@@ -43,17 +50,21 @@ public class Stats {
         return goalsReview;
     }
 
-    public Integer getProgress() {
+    public Float getProgress() {
         return progress;
     }
-
+    @Override
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
     public static class Builder {
         private Integer goalsActive;
         private Integer goalsAll;
         private Integer goalsDone;
         private Integer goalsInactive;
         private Integer goalsReview;
-        private Integer progress;
+        private Float progress;
 
         public Builder goalsActive(Integer goalsActive) {
             this.goalsActive = goalsActive;
@@ -75,7 +86,7 @@ public class Stats {
             this.goalsReview = goalsReview;
             return this;
         }
-        public Builder progress(Integer progress) {
+        public Builder progress(Float progress) {
             this.progress = progress;
             return this;
         }

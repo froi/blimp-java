@@ -1,4 +1,8 @@
+/* github_apache_lic */
+
 package com.getblimp.api.beans;
+
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 
@@ -10,7 +14,7 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 
-public class Profile {
+public class Profile extends BlimpObject {
 	private String aimUsername = null;
 	private String avatar = null;
 	private Calendar dateCreated = null;
@@ -27,7 +31,10 @@ public class Profile {
 	private String twitterUsername = null;
 	private String windowsLiveId = null;
 
-    public Profile(Builder b) {
+    public Profile() {
+        super();
+    }
+    private Profile(Builder b) {
         this.aimUsername = b.aimUsername;
         this.avatar = b.avatar;
         this.dateCreated = b.dateCreated;
@@ -134,6 +141,11 @@ public class Profile {
 	public void setWindowsLiveId(String windowsLiveId) {
 		this.windowsLiveId = windowsLiveId;
 	}
+    @Override
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
     public static class Builder {
         private String aimUsername = null;
         private String avatar = null;
@@ -224,6 +236,10 @@ public class Profile {
         public Builder windowsLiveId(String windowsLiveId) {
             this.windowsLiveId = windowsLiveId;
             return this;
+        }
+
+        public Profile build() {
+            return new Profile(this);
         }
     }
 }

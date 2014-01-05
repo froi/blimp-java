@@ -1,6 +1,9 @@
+/* github_apache_lic */
+
 package com.getblimp.api.beans;
 
-import java.util.ArrayList;
+import com.google.gson.Gson;
+
 import java.util.Calendar;
 import java.util.List;
 
@@ -11,7 +14,7 @@ import java.util.List;
  * Time: 16:58
  * To change this template use File | Settings | File Templates.
  */
-public class Company {
+public class Company extends BlimpObject{
     private List<User> companyUsers;
     private Calendar dateCreated;
     private Calendar dateModified;
@@ -23,7 +26,10 @@ public class Company {
     private Integer usedProjects;
     private String usedStorage;
 
-    public Company(Builder b) {
+    public Company() {
+        super();
+    }
+    private Company(Builder b) {
         this.companyUsers = b.companyUsers;
         this.dateCreated = b.dateCreated;
         this.dateModified = b.dateModified;
@@ -73,6 +79,12 @@ public class Company {
 
     public String getUsedStorage() {
         return usedStorage;
+    }
+
+    @Override
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
     public static class Builder {

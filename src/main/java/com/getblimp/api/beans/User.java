@@ -1,4 +1,8 @@
+/* github_apache_lic */
+
 package com.getblimp.api.beans;
+
+import com.google.gson.Gson;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,7 +12,7 @@ package com.getblimp.api.beans;
  * To change this template use File | Settings | File Templates.
  */
 
-public class User {
+public class User extends BlimpObject {
 	private String email = null;
 	private String firstName = null;
 	private String lastName = null;
@@ -16,7 +20,10 @@ public class User {
 	private String resourceUri = null;
     private String username = null;
 
-    public User(Builder b) {
+    public User() {
+        super();
+    }
+    private User(Builder b) {
         this.email = b.email;
         this.firstName = b.firstName;
         this.lastName = b.lastName;
@@ -42,7 +49,11 @@ public class User {
 	public String getUsername() {
 		return username;
 	}
-
+    @Override
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
     public static class Builder {
         private String email = null;
         private String firstName = null;

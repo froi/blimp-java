@@ -1,6 +1,9 @@
+/* github_apache_lic */
+
 package com.getblimp.api.beans;
 
 import com.getblimp.api.utils.State;
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 
@@ -12,7 +15,7 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 
-public class Task {
+public class Task extends BlimpObject {
     private String assignedTo;
     private String createdBy;
     private Calendar dateChecked;
@@ -27,7 +30,10 @@ public class Task {
     private State state;
     private String title;
 
-    public Task(Builder b) {
+    public Task() {
+        super();
+    }
+    private Task(Builder b) {
         this.assignedTo = b.assignedTo;
         this.createdBy = b.createdBy;
         this.dateChecked = b.dateChecked;
@@ -94,7 +100,11 @@ public class Task {
     public String getTitle() {
         return title;
     }
-
+    @Override
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
     public static class Builder {
         private String assignedTo;
         private String createdBy;

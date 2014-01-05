@@ -1,6 +1,9 @@
+/* github_apache_lic */
+
 package com.getblimp.api.beans;
 
 import com.getblimp.api.utils.State;
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 
-public class Project {
+public class Project extends BlimpObject {
     private String company;
     private Calendar dateCreated;
     private Calendar dateDue;
@@ -28,7 +31,10 @@ public class Project {
     private Stats stats;
     private List<String> team;
 
-    public Project(Builder b) {
+    public Project() {
+        super();
+    }
+    private Project(Builder b) {
         this.company = b.company;
         this.dateCreated = b.dateCreated;
         this.dateDue = b.dateDue;
@@ -42,6 +48,58 @@ public class Project {
         this.state = b.state;
         this.stats = b.stats;
         this.team = b.team;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setDateCreated(Calendar dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public void setDateDue(Calendar dateDue) {
+        this.dateDue = dateDue;
+    }
+
+    public void setDateFinished(Calendar dateFinished) {
+        this.dateFinished = dateFinished;
+    }
+
+    public void setDateModified(Calendar dateModified) {
+        this.dateModified = dateModified;
+    }
+
+    public void setDateStarted(Calendar dateStarted) {
+        this.dateStarted = dateStarted;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setResourceUri(String resourceUri) {
+        this.resourceUri = resourceUri;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public void setStats(Stats stats) {
+        this.stats = stats;
+    }
+
+    public void setTeam(List<String> team) {
+        this.team = team;
     }
 
     public String getCompany() {
@@ -95,7 +153,11 @@ public class Project {
     public List<String> getTeam() {
         return team;
     }
-
+    @Override
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
     public static class Builder {
         private String company;
         private Calendar dateCreated;

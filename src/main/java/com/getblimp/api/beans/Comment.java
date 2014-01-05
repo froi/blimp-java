@@ -1,4 +1,8 @@
+/* github_apache_lic */
+
 package com.getblimp.api.beans;
+
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 import java.util.List;
@@ -11,7 +15,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 
-public class Comment {
+public class Comment extends BlimpObject{
     private String comment;
     private String contentType;
     private Calendar dateCreated;
@@ -22,7 +26,10 @@ public class Comment {
     private String resourceUri;
     private String user;
 
-    public Comment(Builder b) {
+    public Comment() {
+        super();
+    }
+    private Comment(Builder b) {
         this.comment = b.comment;
         this.contentType = b.contentType;
         this.dateCreated = b.dateCreated;
@@ -67,6 +74,12 @@ public class Comment {
 
     public String getUser() {
         return user;
+    }
+
+    @Override
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 
     public static class Builder {
