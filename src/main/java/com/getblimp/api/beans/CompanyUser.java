@@ -25,98 +25,111 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created with IntelliJ IDEA.
  * User: froilan
- * Date: 14-1-2
- * Time: 20:43
+ * Date: 14-1-5
+ * Time: 22:06
  * To change this template use File | Settings | File Templates.
  */
-public class Stats extends BlimpObject {
-    @SerializedName("goals_active")
-    private Integer goalsActive;
-    @SerializedName("goals_all")
-    private Integer goalsAll;
-    @SerializedName("goals_done")
-    private Integer goalsDone;
-    @SerializedName("goals_inactive")
-    private Integer goalsInactive;
-    @SerializedName("goals_review")
-    private Integer goalsReview;
-    @SerializedName("progress")
-    private Float progress;
+public class CompanyUser extends BlimpObject {
+    @SerializedName("accepted_invitation")
+    private Boolean acceptedInvitation;
+    @SerializedName("date_created")
+    private String dateCreated;
+    @SerializedName("date_modified")
+    private String dateModified;
+    @SerializedName("id")
+    private Integer id;
+    @SerializedName("is_active")
+    private Boolean isActive;
+    @SerializedName("role")
+    private String role;
+    @SerializedName("user")
+    private String user;
 
-    public Stats() {
+    public CompanyUser() {
         super();
     }
-    private Stats(Builder b) {
-        this.goalsActive = b.goalsActive;
-        this.goalsAll = b.goalsAll;
-        this.goalsDone = b.goalsDone;
-        this.goalsInactive = b.goalsInactive;
-        this.goalsReview = b.goalsReview;
-        this.progress = b.progress;
-    }
-    public Integer getGoalsActive() {
-        return goalsActive;
+    private CompanyUser(Builder b) {
+        this.acceptedInvitation = b.acceptedInvitation;
+        this.dateCreated = b.dateCreated;
+        this.dateModified = b.dateModified;
+        this.id = b.id;
+        this.isActive = b.isActive;
+        this.role = b.role;
+        this.user = b.user;
     }
 
-    public Integer getGoalsAll() {
-        return goalsAll;
+    public Boolean getAcceptedInvitation() {
+        return acceptedInvitation;
     }
 
-    public Integer getGoalsDone() {
-        return goalsDone;
+    public String getDateCreated() {
+        return dateCreated;
     }
 
-    public Integer getGoalsInactive() {
-        return goalsInactive;
+    public String getDateModified() {
+        return dateModified;
     }
 
-    public Integer getGoalsReview() {
-        return goalsReview;
+    public Integer getId() {
+        return id;
     }
 
-    public Float getProgress() {
-        return progress;
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public String getUser() {
+        return user;
     }
     @Override
     public String toJson() {
         Gson gson = new Gson();
-        return gson.toJson(this);
+
+        return gson.toJson(this);  //To change body of implemented methods use File | Settings | File Templates.
     }
     public static class Builder {
-        private Integer goalsActive;
-        private Integer goalsAll;
-        private Integer goalsDone;
-        private Integer goalsInactive;
-        private Integer goalsReview;
-        private Float progress;
+        private Boolean acceptedInvitation;
+        private String dateCreated;
+        private String dateModified;
+        private Integer id;
+        private Boolean isActive;
+        private String role;
+        private String user;
 
-        public Builder goalsActive(Integer goalsActive) {
-            this.goalsActive = goalsActive;
+        public Builder acceptedInvitation(Boolean acceptedInvitation) {
+            this.acceptedInvitation = acceptedInvitation;
             return this;
         }
-        public Builder goalsAll(Integer goalsAll) {
-            this.goalsAll = goalsAll;
+        public Builder dateCreated(String dateCreated) {
+            this.dateCreated = dateCreated;
             return this;
         }
-        public Builder goalsDone(Integer goalsDone) {
-            this.goalsDone = goalsDone;
+        public Builder dateModified(String dateModified) {
+            this.dateModified = dateModified;
             return this;
         }
-        public Builder goalsInactive(Integer goalsInactive) {
-            this.goalsInactive = goalsInactive;
+        public Builder id(Integer id) {
+            this.id = id;
             return this;
         }
-        public Builder goalsReview(Integer goalsReview) {
-            this.goalsReview = goalsReview;
+        public Builder isActive(Boolean isActive) {
+            this.isActive = isActive;
             return this;
         }
-        public Builder progress(Float progress) {
-            this.progress = progress;
+        public Builder role(String role) {
+            this.role = role;
             return this;
         }
-
-        public Stats build() {
-            return new Stats(this);
+        public Builder user(String user) {
+            this.user = user;
+            return this;
+        }
+        public CompanyUser build() {
+            return new CompanyUser(this);
         }
     }
 }

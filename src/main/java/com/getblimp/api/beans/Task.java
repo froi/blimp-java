@@ -21,8 +21,7 @@ package com.getblimp.api.beans;
 
 import com.getblimp.api.utils.State;
 import com.google.gson.Gson;
-
-import java.util.Calendar;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,18 +32,31 @@ import java.util.Calendar;
  */
 
 public class Task extends BlimpObject {
+    @SerializedName("assigned_to")
     private String assignedTo;
+    @SerializedName("created_by")
     private String createdBy;
-    private Calendar dateChecked;
-    private Calendar dateCreated;
-    private Calendar dateDone;
-    private Calendar dateModified;
-    private Calendar dateSetDoing;
+    @SerializedName("date_checked")
+    private String dateChecked;
+    @SerializedName("date_created")
+    private String dateCreated;
+    @SerializedName("date_done")
+    private String dateDone;
+    @SerializedName("date_modified")
+    private String dateModified;
+    @SerializedName("date_set_doing")
+    private String dateSetDoing;
+    @SerializedName("goal")
     private String goal;
+    @SerializedName("id")
     private Integer id;
+    @SerializedName("position")
     private Integer position;
+    @SerializedName("resource_uri")
     private String resourceUri;
+    @SerializedName("state")
     private State state;
+    @SerializedName("title")
     private String title;
 
     public Task() {
@@ -74,23 +86,23 @@ public class Task extends BlimpObject {
         return createdBy;
     }
 
-    public Calendar getDateChecked() {
+    public String getDateChecked() {
         return dateChecked;
     }
 
-    public Calendar getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public Calendar getDateDone() {
+    public String getDateDone() {
         return dateDone;
     }
 
-    public Calendar getDateModified() {
+    public String getDateModified() {
         return dateModified;
     }
 
-    public Calendar getDateSetDoing() {
+    public String getDateSetDoing() {
         return dateSetDoing;
     }
 
@@ -125,11 +137,11 @@ public class Task extends BlimpObject {
     public static class Builder {
         private String assignedTo;
         private String createdBy;
-        private Calendar dateChecked;
-        private Calendar dateCreated;
-        private Calendar dateDone;
-        private Calendar dateModified;
-        private Calendar dateSetDoing;
+        private String dateChecked;
+        private String dateCreated;
+        private String dateDone;
+        private String dateModified;
+        private String dateSetDoing;
         private String goal;
         private Integer id;
         private Integer position;
@@ -147,27 +159,27 @@ public class Task extends BlimpObject {
             return this;
         }
 
-        public Builder dateChecked(Calendar dateChecked) {
+        public Builder dateChecked(String dateChecked) {
             this.dateChecked = dateChecked;
             return this;
         }
 
-        public Builder dateCreated(Calendar dateCreated) {
+        public Builder dateCreated(String dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
 
-        public Builder dateDone(Calendar dateDone) {
+        public Builder dateDone(String dateDone) {
             this.dateDone = dateDone;
             return this;
         }
 
-        public Builder dateModified(Calendar dateModified) {
+        public Builder dateModified(String dateModified) {
             this.dateModified = dateModified;
             return this;
         }
 
-        public Builder dateSetDoing(Calendar dateSetDoing) {
+        public Builder dateSetDoing(String dateSetDoing) {
             this.dateSetDoing = dateSetDoing;
             return this;
         }

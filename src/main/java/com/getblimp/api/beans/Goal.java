@@ -21,8 +21,7 @@ package com.getblimp.api.beans;
 
 import com.getblimp.api.utils.State;
 import com.google.gson.Gson;
-
-import java.util.Calendar;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,18 +32,31 @@ import java.util.Calendar;
  */
 
 public class Goal extends BlimpObject{
+    @SerializedName("assigned_to")
     private String assignedTo;
+    @SerializedName("created_by")
     private String createdBy;
-    private Calendar dateCreated;
-    private Calendar dateDone;
-    private Calendar dateModified;
-    private Calendar dateRejected;
+    @SerializedName("date_created")
+    private String dateCreated;
+    @SerializedName("date_done")
+    private String dateDone;
+    @SerializedName("date_modified")
+    private String dateModified;
+    @SerializedName("date_rejected")
+    private String dateRejected;
+    @SerializedName("id")
     private Integer id;
+    @SerializedName("position")
     private Integer position;
+    @SerializedName("project")
     private String project;
+    @SerializedName("resource_uri")
     private String resourceUri;
+    @SerializedName("state")
     private State state;
+    @SerializedName("title")
     private String title;
+    @SerializedName("user_rejected")
     private String userRejected;
 
     public Goal() {
@@ -74,19 +86,19 @@ public class Goal extends BlimpObject{
         return createdBy;
     }
 
-    public Calendar getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public Calendar getDateDone() {
+    public String getDateDone() {
         return dateDone;
     }
 
-    public Calendar getDateModified() {
+    public String getDateModified() {
         return dateModified;
     }
 
-    public Calendar getDateRejected() {
+    public String getDateRejected() {
         return dateRejected;
     }
 
@@ -125,10 +137,10 @@ public class Goal extends BlimpObject{
     public static class Builder {
         private String assignedTo;
         private String createdBy;
-        private Calendar dateCreated;
-        private Calendar dateDone;
-        private Calendar dateModified;
-        private Calendar dateRejected;
+        private String dateCreated;
+        private String dateDone;
+        private String dateModified;
+        private String dateRejected;
         private Integer id;
         private Integer position;
         private String project;
@@ -145,19 +157,19 @@ public class Goal extends BlimpObject{
             this.createdBy = createdBy;
             return this;
         }
-        public Builder dateCreated(Calendar dateCreated) {
+        public Builder dateCreated(String dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
-        public Builder dateDone(Calendar dateDone) {
+        public Builder dateDone(String dateDone) {
             this.dateDone = dateDone;
             return this;
         }
-        public Builder dateModified(Calendar dateModified) {
+        public Builder dateModified(String dateModified) {
             this.dateModified = dateModified;
             return this;
         }
-        public Builder dateRejected(Calendar dateRejected) {
+        public Builder dateRejected(String dateRejected) {
             this.dateRejected = dateRejected;
             return this;
         }

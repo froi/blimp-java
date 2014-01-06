@@ -20,8 +20,7 @@
 package com.getblimp.api.beans;
 
 import com.google.gson.Gson;
-
-import java.util.Calendar;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,20 +31,35 @@ import java.util.Calendar;
  */
 
 public class Profile extends BlimpObject {
+    @SerializedName("aim_username")
 	private String aimUsername = null;
+    @SerializedName("avatr")
 	private String avatar = null;
-	private Calendar dateCreated = null;
-	private Calendar dateModified = null;
+    @SerializedName("date_created")
+	private String dateCreated = null;
+    @SerializedName("date_modified")
+	private String dateModified = null;
+    @SerializedName("email_notifications")
 	private String emailNotifications = null;
+    @SerializedName("facebook_id")
 	private String facebookId = null;
+    @SerializedName("gravater_url")
 	private String gravatarUrl = null;
+    @SerializedName("gtalk_username")
 	private String gtalkUsername = null;
+    @SerializedName("job_title")
 	private String jobTitle = null;
+    @SerializedName("last_ip")
 	private String lastIp = null;
+    @SerializedName("phone")
 	private String phone = null;
+    @SerializedName("skype_username")
 	private String skypeUsername = null;
+    @SerializedName("timezone")
 	private String timezone = null;
+    @SerializedName("twitter_username")
 	private String twitterUsername = null;
+    @SerializedName("windows_live_id")
 	private String windowsLiveId = null;
 
     public Profile() {
@@ -80,16 +94,16 @@ public class Profile extends BlimpObject {
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
-	public Calendar getDateCreated() {
+	public String getDateCreated() {
 		return dateCreated;
 	}
-	public void setDateCreated(Calendar dateCreated) {
+	public void setDateCreated(String dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-	public Calendar getDateModified() {
+	public String getDateModified() {
 		return dateModified;
 	}
-	public void setDateModified(Calendar dateModified) {
+	public void setDateModified(String dateModified) {
 		this.dateModified = dateModified;
 	}
 	public String getEmailNotifications() {
@@ -166,8 +180,8 @@ public class Profile extends BlimpObject {
     public static class Builder {
         private String aimUsername = null;
         private String avatar = null;
-        private Calendar dateCreated = null;
-        private Calendar dateModified = null;
+        private String dateCreated = null;
+        private String dateModified = null;
         private String emailNotifications = null;
         private String facebookId = null;
         private String gravatarUrl = null;
@@ -190,12 +204,12 @@ public class Profile extends BlimpObject {
             return this;
         }
 
-        public Builder dateCreated(Calendar dateCreated) {
+        public Builder dateCreated(String dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
 
-        public Builder dateModified(Calendar dateModified) {
+        public Builder dateModified(String dateModified) {
             this.dateModified = dateModified;
             return this;
         }

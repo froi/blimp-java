@@ -20,8 +20,8 @@
 package com.getblimp.api.beans;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -33,14 +33,23 @@ import java.util.List;
  */
 
 public class File extends BlimpObject{
+    @SerializedName("created_by")
     private String createdBy;
+    @SerializedName("date_created")
     private String dateCreated;
-    private Calendar dateModified;
+    @SerializedName("date_modified")
+    private String dateModified;
+    @SerializedName("id")
     private Integer id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("project")
     private String project;
+    @SerializedName("resource_uri")
     private String resourceUri;
+    @SerializedName("source")
     private String source;
+    @SerializedName("versions")
     private List<Version> versions;
 
     public File() {
@@ -66,7 +75,7 @@ public class File extends BlimpObject{
         return dateCreated;
     }
 
-    public Calendar getDateModified() {
+    public String getDateModified() {
         return dateModified;
     }
 
@@ -101,7 +110,7 @@ public class File extends BlimpObject{
     public static class Builder {
         private String createdBy;
         private String dateCreated;
-        private Calendar dateModified;
+        private String dateModified;
         private Integer id;
         private String name;
         private String project;
@@ -117,7 +126,7 @@ public class File extends BlimpObject{
             this.dateCreated = dateCreated;
             return this;
         }
-        public Builder dateModified(Calendar dateModified) {
+        public Builder dateModified(String dateModified) {
             this.dateModified = dateModified;
             return this;
         }

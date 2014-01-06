@@ -20,8 +20,7 @@
 package com.getblimp.api.beans;
 
 import com.google.gson.Gson;
-
-import java.util.Calendar;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,17 +31,29 @@ import java.util.Calendar;
  */
 
 public class Version extends BlimpObject {
+    @SerializedName("contect")
 	private String content = null;
+    @SerializedName("content_type")
 	private String contentType = null;
-    private Calendar dateCreated = null;
-	private Calendar dateModified = null;
+    @SerializedName("date_created")
+    private String dateCreated = null;
+    @SerializedName("date_modified")
+	private String dateModified = null;
+    @SerializedName("height")
     private int height = 0;
+    @SerializedName("id")
     private int id =  0;
+    @SerializedName("name")
     private String name = null;
+    @SerializedName("preview_url")
     private String previewUrl = null;
+    @SerializedName("resource_url")
     private String resourceUri = null;
+    @SerializedName("size")
     private int size = 0;
+    @SerializedName("thumbnail_url")
     private String thumbnailUrl = null;
+    @SerializedName("width")
     private int width = 80;
 
     public Version() {
@@ -68,10 +79,10 @@ public class Version extends BlimpObject {
 	public String getContentType() {
 		return contentType;
 	}
-	public Calendar getDateCreated() {
+	public String getDateCreated() {
 		return dateCreated;
 	}
-	public Calendar getDateModified() {
+	public String getDateModified() {
 		return dateModified;
 	}
 	public int getHeight() {
@@ -107,8 +118,8 @@ public class Version extends BlimpObject {
 
         private String content = null;
         private String contentType = null;
-        private Calendar dateCreated = null;
-        private Calendar dateModified = null;
+        private String dateCreated = null;
+        private String dateModified = null;
         private int height = 0;
         private int id =  0;
         private String name = null;
@@ -126,11 +137,11 @@ public class Version extends BlimpObject {
             this.contentType = contentType;
             return this;
         }
-        public Builder dateCreated(Calendar dateCreated) {
+        public Builder dateCreated(String dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
-        public Builder dateModified(Calendar dateModified) {
+        public Builder dateModified(String dateModified) {
             this.dateModified = dateModified;
             return this;
         }

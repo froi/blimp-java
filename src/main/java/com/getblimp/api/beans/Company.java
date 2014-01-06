@@ -20,8 +20,8 @@
 package com.getblimp.api.beans;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -32,15 +32,25 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class Company extends BlimpObject{
-    private List<User> companyUsers;
-    private Calendar dateCreated;
-    private Calendar dateModified;
+    @SerializedName("company_users")
+    private List<CompanyUser> companyUsers;
+    @SerializedName("date_created")
+    private String dateCreated;
+    @SerializedName("date_modified")
+    private String dateModified;
+    @SerializedName("id")
     private Integer id;
+    @SerializedName("image_url")
     private String imageUrl;
+    @SerializedName("name")
     private String name;
+    @SerializedName("resource_url")
     private String resourceUrl;
+    @SerializedName("slug")
     private String slug;
+    @SerializedName("used_projects")
     private Integer usedProjects;
+    @SerializedName("used_storage")
     private String usedStorage;
 
     public Company() {
@@ -58,15 +68,15 @@ public class Company extends BlimpObject{
         this.usedProjects = b.usedProjects;
         this.usedStorage = b.usedStorage;
     }
-    public List<User> getCompanyUsers() {
+    public List<CompanyUser> getCompanyUsers() {
         return companyUsers;
     }
 
-    public Calendar getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public Calendar getDateModified() {
+    public String getDateModified() {
         return dateModified;
     }
 
@@ -105,9 +115,9 @@ public class Company extends BlimpObject{
     }
 
     public static class Builder {
-        private List<User> companyUsers;
-        private Calendar dateCreated;
-        private Calendar dateModified;
+        private List<CompanyUser> companyUsers;
+        private String dateCreated;
+        private String dateModified;
         private Integer id;
         private String imageUrl;
         private String name;
@@ -116,15 +126,15 @@ public class Company extends BlimpObject{
         private Integer usedProjects;
         private String usedStorage;
 
-        public Builder companyUsers(List<User> companyUsers) {
+        public Builder companyUsers(List<CompanyUser> companyUsers) {
             this.companyUsers = companyUsers;
             return this;
         }
-        public Builder dateCreated(Calendar dateCreated) {
+        public Builder dateCreated(String dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
-        public Builder dateModified(Calendar dateModified) {
+        public Builder dateModified(String dateModified) {
             this.dateModified = dateModified;
             return this;
         }

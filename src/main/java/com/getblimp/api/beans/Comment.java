@@ -20,8 +20,8 @@
 package com.getblimp.api.beans;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -33,14 +33,23 @@ import java.util.List;
  */
 
 public class Comment extends BlimpObject{
+    @SerializedName("comment")
     private String comment;
+    @SerializedName("content_type")
     private String contentType;
-    private Calendar dateCreated;
-    private Calendar dateModified;
+    @SerializedName("date_created")
+    private String dateCreated;
+    @SerializedName("date_modified")
+    private String dateModified;
+    @SerializedName("files")
     private List<File> files;
+    @SerializedName("id")
     private Integer id;
+    @SerializedName("object_pk")
     private Integer objectPk;
+    @SerializedName("resource_uri")
     private String resourceUri;
+    @SerializedName("user")
     private String user;
 
     public Comment() {
@@ -65,11 +74,11 @@ public class Comment extends BlimpObject{
         return contentType;
     }
 
-    public Calendar getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public Calendar getDateModified() {
+    public String getDateModified() {
         return dateModified;
     }
 
@@ -102,8 +111,8 @@ public class Comment extends BlimpObject{
     public static class Builder {
         private String comment;
         private String contentType;
-        private Calendar dateCreated;
-        private Calendar dateModified;
+        private String dateCreated;
+        private String dateModified;
         private List<File> files;
         private Integer id;
         private Integer objectPk;
@@ -118,11 +127,11 @@ public class Comment extends BlimpObject{
             this.contentType = contentType;
             return this;
         }
-        public Builder dateCreated(Calendar dateCreated) {
+        public Builder dateCreated(String dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
-        public Builder dateModified(Calendar dateModified) {
+        public Builder dateModified(String dateModified) {
             this.dateModified = dateModified;
             return this;
         }

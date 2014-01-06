@@ -20,6 +20,7 @@
 package com.getblimp.api.beans;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,11 +31,17 @@ import com.google.gson.Gson;
  */
 
 public class User extends BlimpObject {
-	private String email = null;
+    @SerializedName("email")
+    private String email = null;
+    @SerializedName("first_name")
 	private String firstName = null;
+    @SerializedName("last_name")
 	private String lastName = null;
+    @SerializedName("profile")
 	private Profile profile = null;
+    @SerializedName("resource_uri")
 	private String resourceUri = null;
+    @SerializedName("username")
     private String username = null;
 
     public User() {

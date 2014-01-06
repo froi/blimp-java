@@ -21,8 +21,8 @@ package com.getblimp.api.beans;
 
 import com.getblimp.api.utils.State;
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -34,18 +34,31 @@ import java.util.List;
  */
 
 public class Project extends BlimpObject {
+    @SerializedName("company")
     private String company;
-    private Calendar dateCreated;
-    private Calendar dateDue;
-    private Calendar dateFinished;
-    private Calendar dateModified;
-    private Calendar dateStarted;
+    @SerializedName("date_created")
+    private String dateCreated;
+    @SerializedName("date_due")
+    private String dateDue;
+    @SerializedName("date_finished")
+    private String dateFinished;
+    @SerializedName("date_modified")
+    private String dateModified;
+    @SerializedName("date_started")
+    private String dateStarted;
+    @SerializedName("id")
     private Integer id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("resource_uri")
     private String resourceUri;
+    @SerializedName("slug")
     private String slug;
+    @SerializedName("state")
     private State state;
+    @SerializedName("stats")
     private Stats stats;
+    @SerializedName("team")
     private List<String> team;
 
     public Project() {
@@ -71,23 +84,23 @@ public class Project extends BlimpObject {
         this.company = company;
     }
 
-    public void setDateCreated(Calendar dateCreated) {
+    public void setDateCreated(String dateCreated) {
         this.dateCreated = dateCreated;
     }
 
-    public void setDateDue(Calendar dateDue) {
+    public void setDateDue(String dateDue) {
         this.dateDue = dateDue;
     }
 
-    public void setDateFinished(Calendar dateFinished) {
+    public void setDateFinished(String dateFinished) {
         this.dateFinished = dateFinished;
     }
 
-    public void setDateModified(Calendar dateModified) {
+    public void setDateModified(String dateModified) {
         this.dateModified = dateModified;
     }
 
-    public void setDateStarted(Calendar dateStarted) {
+    public void setDateStarted(String dateStarted) {
         this.dateStarted = dateStarted;
     }
 
@@ -123,23 +136,23 @@ public class Project extends BlimpObject {
         return company;
     }
 
-    public Calendar getDateCreated() {
+    public String getDateCreated() {
         return dateCreated;
     }
 
-    public Calendar getDateDue() {
+    public String getDateDue() {
         return dateDue;
     }
 
-    public Calendar getDateFinished() {
+    public String getDateFinished() {
         return dateFinished;
     }
 
-    public Calendar getDateModified() {
+    public String getDateModified() {
         return dateModified;
     }
 
-    public Calendar getDateStarted() {
+    public String getDateStarted() {
         return dateStarted;
     }
 
@@ -177,11 +190,11 @@ public class Project extends BlimpObject {
     }
     public static class Builder {
         private String company;
-        private Calendar dateCreated;
-        private Calendar dateDue;
-        private Calendar dateFinished;
-        private Calendar dateModified;
-        private Calendar dateStarted;
+        private String dateCreated;
+        private String dateDue;
+        private String dateFinished;
+        private String dateModified;
+        private String dateStarted;
         private Integer id;
         private String name;
         private String resourceUri;
@@ -194,23 +207,23 @@ public class Project extends BlimpObject {
             this.company = company;
             return this;
         }
-        public Builder dateCreated(Calendar dateCreated) {
+        public Builder dateCreated(String dateCreated) {
             this.dateCreated = dateCreated;
             return this;
         }
-        public Builder dateDue(Calendar dateDue) {
+        public Builder dateDue(String dateDue) {
             this.dateDue = dateDue;
             return this;
         }
-        public Builder dateFinished(Calendar dateFinished) {
+        public Builder dateFinished(String dateFinished) {
             this.dateFinished = dateFinished;
             return this;
         }
-        public Builder dateModified(Calendar dateModified) {
+        public Builder dateModified(String dateModified) {
             this.dateModified = dateModified;
             return this;
         }
-        public Builder dateStarted(Calendar dateStarted) {
+        public Builder dateStarted(String dateStarted) {
             this.dateStarted = dateStarted;
             return this;
         }
