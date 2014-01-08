@@ -27,133 +27,214 @@ package com.getblimp.api.client;
  * To change this template use File | Settings | File Templates.
  */
 
+import com.getblimp.api.beans.BlimpObject;
 import com.getblimp.api.utils.BlimpHttpHeaders;
 import com.getblimp.api.utils.BlimpResources;
+import com.getblimp.api.utils.HttpMethods;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Blimp {
 	private String userName = null;
 	private String apiKey = null;
 	private String applicationId = null;
 	private String applicationSecret = null;
+    private ResourceBundle resourceBundle = null;
+    private Logger logger = Logger.getLogger(this.getClass().getName());
 
-	public Blimp(String userName, String apiKey, String applicationId,
-			String applicationSecret) {
+	public Blimp(String userName, String apiKey, String applicationId, String applicationSecret) {
 		super();
 		this.userName = userName;
 		this.apiKey = apiKey;
 		this.applicationId = applicationId;
 		this.applicationSecret = applicationSecret;
+        this.resourceBundle = ResourceBundle.getBundle("blimp-constants");
+        this.logger.setLevel(Level.INFO);
 	}
 	
-	public String get(BlimpResources resource) {
-		
-		//Builds the Base endpoint URL
-		StringBuilder url = new StringBuilder();
-		url.append(BlimpResources.ENDPOINT.resource());
-		url.append(resource.resource());
+	public String fetch(BlimpResources resource) {
+		logger.fine("Entering Blimp.fetch method.");
 
 		// Response output variable
-		StringBuilder output = null;
+		String output = null;
 
-        CloseableHttpClient client = HttpClients.createDefault();
-		
-		//Set http get object and headers
-		HttpGet getRequest = new HttpGet(url.toString());
-		getRequest.addHeader(BlimpHttpHeaders.AUTHORIZATION.getValue(),
-				"ApiKey " + this.userName + ":" + this.apiKey);
-		getRequest.addHeader(BlimpHttpHeaders.APPID.getValue(), 
-				this.applicationId);
-		getRequest.addHeader(BlimpHttpHeaders.APPSECRET.getValue(), 
-				this.applicationSecret);
-		
 		try {
-			HttpResponse response = client.execute(getRequest);
-			
-			if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-				throw new RuntimeException("Request Failed: " +
-						"HTTP Status code: " + String.valueOf(
-								response.getStatusLine().getStatusCode()));
-			}
-			
-			BufferedReader br = new BufferedReader(
-                    new InputStreamReader((response.getEntity().getContent())));
 
-			String tmpOutput;
-			output = new StringBuilder();
-			System.out.println("Output from Server .... \n");
-			while ((tmpOutput = br.readLine()) != null) {
-				output.append(tmpOutput);
-			}
-
-			client.close();
+			output = execute(createRequestMethod(createRequestUrl(resource.resource()), HttpMethods.GET));
 
 		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			errorHandler(e);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return output.toString();
+            errorHandler(e);
+		} catch (Exception e) {
+            errorHandler(e);
+        }
+		return output;
 	}
+
+    public String fetch(String resourceUrl) {
+        logger.fine("Entering Blimp.fetch method.");
+
+        // Response output variable
+        String output = null;
+
+        try {
+
+            output = execute(createRequestMethod(createRequestUrl(resourceUrl), HttpMethods.GET));
+
+        } catch (ClientProtocolException e) {
+            errorHandler(e);
+        } catch (IOException e) {
+            errorHandler(e);
+        } catch (Exception e) {
+            errorHandler(e);
+        }
+        return output;
+    }
+    public String post(BlimpResources resource, BlimpObject data) {
+        logger.fine("Entering Blimp.post method.");
+
+        // Response output variable
+        String output = null;
+
+        try {
+
+            HttpPost tmpPost =(HttpPost)createRequestMethod(createRequestUrl(resource.resource()), HttpMethods.POST);
+            tmpPost.setEntity(new StringEntity(data.toJson()));
+
+            output = execute(tmpPost);
+
+        } catch (ClientProtocolException e) {
+            errorHandler(e);
+        } catch (IOException e) {
+            errorHandler(e);
+        } catch (Exception e) {
+            errorHandler(e);
+        }
+
+        return output;
+    }
+
+    public String update(BlimpResources resource, BlimpObject data) {
+        logger.fine("Entering Blimp.update method.");
+
+        // Response output variable
+        String output = null;
+
+        try {
+
+            HttpPut tmpPut =(HttpPut)createRequestMethod(createRequestUrl(resource.resource()), HttpMethods.PUT);
+            tmpPut.setEntity(new StringEntity(data.toJson()));
+
+            output = execute(tmpPut);
+
+        } catch (ClientProtocolException e) {
+            errorHandler(e);
+        } catch (IOException e) {
+            errorHandler(e);
+        } catch (Exception e) {
+            errorHandler(e);
+        }
+
+        return output;
+    }
+
 	public String getSchema(BlimpResources resource) {
-		//Builds the Base endpoint URL
-		StringBuilder url = new StringBuilder();
-		url.append(BlimpResources.ENDPOINT.resource());
-		url.append(resource.resource());
-		url.append(BlimpResources.SCHEMA.resource());
+        logger.fine("Entering Blimp.update method.");
 
-		// Response output variable
-		StringBuilder output = null;
+        // Response output variable
+        String output = null;
+
+        try {
+
+            output = execute(createRequestMethod(createRequestUrl(
+                    resource.resource() + BlimpResources.SCHEMA.resource()), HttpMethods.GET));
+
+        } catch (ClientProtocolException e) {
+            errorHandler(e);
+        } catch (IOException e) {
+            errorHandler(e);
+        } catch (Exception e) {
+            errorHandler(e);
+        }
+        return output;
+	}
+    private String createRequestUrl(String resourceUri) {
+        StringBuilder url = new StringBuilder();
+        url.append(resourceBundle.getString("base_url")).append(resourceUri);
+        logger.fine("Request url: " + url.toString());
+
+        return url.toString();
+    }
+    private HttpRequestBase createRequestMethod(String url, HttpMethods method) throws Exception{
+        HttpRequestBase tmpRequest;
+
+        switch (method) {
+            case GET:
+                tmpRequest = new HttpGet(url);
+                break;
+            case POST:
+                tmpRequest = new HttpPost(url);
+                break;
+            case PUT:
+                tmpRequest = new HttpPut(url);
+                break;
+            default:
+                throw new Exception("Wrong HTTP method.");
+        }
+
+        tmpRequest.addHeader(resourceBundle.getString(BlimpHttpHeaders.AUTHORIZATION.getValue()), "ApiKey " + this.userName + ":" + this.apiKey);
+        tmpRequest.addHeader(resourceBundle.getString(BlimpHttpHeaders.APPID.getValue()), this.applicationId);
+        tmpRequest.addHeader(resourceBundle.getString(BlimpHttpHeaders.APPSECRET.getValue()), this.applicationSecret);
+
+        return tmpRequest;
+    }
+
+    private String execute(HttpRequestBase request) throws IOException, RuntimeException {
+        logger.fine("Entering Blimp.execute");
 
         CloseableHttpClient client = HttpClients.createDefault();
 
-        //Set http get object and headers
-		HttpGet getRequest = new HttpGet(url.toString());
-		getRequest.addHeader(BlimpHttpHeaders.AUTHORIZATION.getValue(), 
-				"ApiKey " + this.userName + ":" + this.apiKey);
-		getRequest.addHeader(BlimpHttpHeaders.APPID.getValue(), 
-				this.applicationId);
-		getRequest.addHeader(BlimpHttpHeaders.APPSECRET.getValue(), 
-				this.applicationSecret);
-		
-		try {
-			HttpResponse response = client.execute(getRequest);
-			
-			if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
-				throw new RuntimeException("Request Failed: " +
-						"HTTP Status code: " + String.valueOf(
-								response.getStatusLine().getStatusCode()));
-			}
-			
-			BufferedReader br = new BufferedReader(
-                    new InputStreamReader((response.getEntity().getContent())));
+        logger.fine("Blimp.execute executing HTTP method: " + request.getMethod() );
+        HttpResponse response = client.execute(request);
 
-			String tmpOutput;
-			output = new StringBuilder();
-			System.out.println("Output from Server .... \n");
-			while ((tmpOutput = br.readLine()) != null) {
-				output.append(tmpOutput);
-			}
-            client.close();
+        if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
+            throw new RuntimeException("Request Failed: " +
+                    "HTTP Status code: " + String.valueOf( response.getStatusLine().getStatusCode() ));
+        }
+        BufferedReader br = new BufferedReader( new InputStreamReader(response.getEntity().getContent()) );
 
-		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return output.toString();
-	}
+        String tmpOutput;
+        StringBuilder output = new StringBuilder();
+        System.out.println("Output from Server .... \n");
+        while ((tmpOutput = br.readLine()) != null) {
+            output.append(tmpOutput);
+        }
+
+        client.close();
+
+        return output.toString();
+    }
+
+    private void errorHandler(Exception e) {
+        logger.severe(e.getMessage());
+        if(logger.getLevel().intValue() <= Level.FINE.intValue()) {
+            e.printStackTrace();
+        }
+    }
 }

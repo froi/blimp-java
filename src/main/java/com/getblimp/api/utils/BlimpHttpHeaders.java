@@ -28,9 +28,9 @@ package com.getblimp.api.utils;
  */
 
 public enum BlimpHttpHeaders {
-	AUTHORIZATION("Authorization"),
-	APPID("X_BLIMP_APPID"),
-	APPSECRET("X_BLIMP_SECRET");
+	AUTHORIZATION("auth_header"),
+	APPID("appid_header"),
+	APPSECRET("appsecret_header");
 
 	private String value;
 	

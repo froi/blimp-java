@@ -28,15 +28,14 @@ package com.getblimp.api.utils;
  */
 
 public enum BlimpResources {
-	ENDPOINT("https://app.getblimp.com/api/v2/"),
-	COMPANY("company/"),
-	PROJECT("project/"),
-	GOAL("goal/"),
-	TASK("task/"),
-	COMMENT("comment/"),
-	FILE("file/"),
-	USER("user/"),
-	SCHEMA("schema/");
+	COMPANY("company_endpoint"),
+	PROJECT("project_endpoint"),
+	GOAL("goal_endpoint"),
+	TASK("task_endpoint"),
+	COMMENT("comment_endpoint"),
+	FILE("file_endpoint"),
+	USER("user_endpoint"),
+	SCHEMA("schema_endpoint");
 	
 	private String resource = null;
 	
