@@ -56,18 +56,7 @@ public class Company extends BlimpObject{
     public Company() {
         super();
     }
-    private Company(Builder b) {
-        this.companyUsers = b.companyUsers;
-        this.dateCreated = b.dateCreated;
-        this.dateModified = b.dateModified;
-        this.id = b.id;
-        this.imageUrl = b.imageUrl;
-        this.name = b.name;
-        this.resourceUrl = b.resourceUrl;
-        this.slug = b.slug;
-        this.usedProjects = b.usedProjects;
-        this.usedStorage = b.usedStorage;
-    }
+
     public List<CompanyUser> getCompanyUsers() {
         return companyUsers;
     }
@@ -114,60 +103,39 @@ public class Company extends BlimpObject{
         return gson.toJson(this);
     }
 
-    public static class Builder {
-        private List<CompanyUser> companyUsers;
-        private String dateCreated;
-        private String dateModified;
-        private Integer id;
-        private String imageUrl;
-        private String name;
-        private String resourceUrl;
-        private String slug;
-        private Integer usedProjects;
-        private String usedStorage;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        public Builder companyUsers(List<CompanyUser> companyUsers) {
-            this.companyUsers = companyUsers;
-            return this;
-        }
-        public Builder dateCreated(String dateCreated) {
-            this.dateCreated = dateCreated;
-            return this;
-        }
-        public Builder dateModified(String dateModified) {
-            this.dateModified = dateModified;
-            return this;
-        }
-        public Builder id(Integer id) {
-            this.id = id;
-            return this;
-        }
-        public Builder imageUrl(String imageUrl) {
-            this.imageUrl = imageUrl;
-            return this;
-        }
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-        public Builder resourceUrl(String resourceUrl) {
-            this.resourceUrl = resourceUrl;
-            return this;
-        }
-        public Builder slug(String slug) {
-            this.slug = slug;
-            return this;
-        }
-        public Builder usedProjects(Integer usedProjects) {
-            this.usedProjects = usedProjects;
-            return this;
-        }
-        public Builder usedStorage(String usedStorage) {
-            this.usedStorage = usedStorage;
-            return this;
-        }
-        public Company build() {
-            return new Company(this);
-        }
+        Company company = (Company) o;
+
+        if (!companyUsers.equals(company.companyUsers)) return false;
+        if (!dateCreated.equals(company.dateCreated)) return false;
+        if (!dateModified.equals(company.dateModified)) return false;
+        if (!id.equals(company.id)) return false;
+        if (!imageUrl.equals(company.imageUrl)) return false;
+        if (!name.equals(company.name)) return false;
+        if (!resourceUrl.equals(company.resourceUrl)) return false;
+        if (!slug.equals(company.slug)) return false;
+        if (!usedProjects.equals(company.usedProjects)) return false;
+        if (!usedStorage.equals(company.usedStorage)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = companyUsers.hashCode();
+        result = 31 * result + dateCreated.hashCode();
+        result = 31 * result + dateModified.hashCode();
+        result = 31 * result + id.hashCode();
+        result = 31 * result + imageUrl.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + resourceUrl.hashCode();
+        result = 31 * result + slug.hashCode();
+        result = 31 * result + usedProjects.hashCode();
+        result = 31 * result + usedStorage.hashCode();
+        return result;
     }
 }

@@ -46,14 +46,6 @@ public class Stats extends BlimpObject {
     public Stats() {
         super();
     }
-    private Stats(Builder b) {
-        this.goalsActive = b.goalsActive;
-        this.goalsAll = b.goalsAll;
-        this.goalsDone = b.goalsDone;
-        this.goalsInactive = b.goalsInactive;
-        this.goalsReview = b.goalsReview;
-        this.progress = b.progress;
-    }
     public Integer getGoalsActive() {
         return goalsActive;
     }
@@ -81,42 +73,5 @@ public class Stats extends BlimpObject {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-    public static class Builder {
-        private Integer goalsActive;
-        private Integer goalsAll;
-        private Integer goalsDone;
-        private Integer goalsInactive;
-        private Integer goalsReview;
-        private Float progress;
-
-        public Builder goalsActive(Integer goalsActive) {
-            this.goalsActive = goalsActive;
-            return this;
-        }
-        public Builder goalsAll(Integer goalsAll) {
-            this.goalsAll = goalsAll;
-            return this;
-        }
-        public Builder goalsDone(Integer goalsDone) {
-            this.goalsDone = goalsDone;
-            return this;
-        }
-        public Builder goalsInactive(Integer goalsInactive) {
-            this.goalsInactive = goalsInactive;
-            return this;
-        }
-        public Builder goalsReview(Integer goalsReview) {
-            this.goalsReview = goalsReview;
-            return this;
-        }
-        public Builder progress(Float progress) {
-            this.progress = progress;
-            return this;
-        }
-
-        public Stats build() {
-            return new Stats(this);
-        }
     }
 }

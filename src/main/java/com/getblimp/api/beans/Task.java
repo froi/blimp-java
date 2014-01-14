@@ -64,16 +64,9 @@ public class Task extends BlimpObject {
     }
     private Task(Builder b) {
         this.assignedTo = b.assignedTo;
-        this.createdBy = b.createdBy;
-        this.dateChecked = b.dateChecked;
-        this.dateCreated = b.dateCreated;
-        this.dateDone = b.dateDone;
-        this.dateModified = b.dateModified;
-        this.dateSetDoing = b.dateSetDoing;
         this.goal = b.goal;
         this.id = b.id;
         this.position = b.position;
-        this.resourceUri = b.resourceUri;
         this.state = b.state;
         this.title = b.title;
     }
@@ -136,51 +129,14 @@ public class Task extends BlimpObject {
     }
     public static class Builder {
         private String assignedTo;
-        private String createdBy;
-        private String dateChecked;
-        private String dateCreated;
-        private String dateDone;
-        private String dateModified;
-        private String dateSetDoing;
         private String goal;
         private Integer id;
         private Integer position;
-        private String resourceUri;
         private State state;
         private String title;
 
         public Builder assignedTo(String assignedTo) {
             this.assignedTo = assignedTo;
-            return this;
-        }
-
-        public Builder createdBy(String createdBy) {
-            this.createdBy = createdBy;
-            return this;
-        }
-
-        public Builder dateChecked(String dateChecked) {
-            this.dateChecked = dateChecked;
-            return this;
-        }
-
-        public Builder dateCreated(String dateCreated) {
-            this.dateCreated = dateCreated;
-            return this;
-        }
-
-        public Builder dateDone(String dateDone) {
-            this.dateDone = dateDone;
-            return this;
-        }
-
-        public Builder dateModified(String dateModified) {
-            this.dateModified = dateModified;
-            return this;
-        }
-
-        public Builder dateSetDoing(String dateSetDoing) {
-            this.dateSetDoing = dateSetDoing;
             return this;
         }
 
@@ -196,11 +152,6 @@ public class Task extends BlimpObject {
 
         public Builder position(Integer position) {
             this.position = position;
-            return this;
-        }
-
-        public Builder resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
             return this;
         }
 

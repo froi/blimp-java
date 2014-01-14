@@ -57,12 +57,9 @@ public class File extends BlimpObject{
     }
     private File(Builder b) {
         this.createdBy = b.createdBy;
-        this.dateCreated = b.dateCreated;
-        this.dateModified = b.dateModified;
         this.id = b.id;
         this.name = b.name;
         this.project = b.project;
-        this.resourceUri = b.resourceUri;
         this.source = b.source;
         this.versions = b.versions;
     }
@@ -109,25 +106,14 @@ public class File extends BlimpObject{
     }
     public static class Builder {
         private String createdBy;
-        private String dateCreated;
-        private String dateModified;
         private Integer id;
         private String name;
         private String project;
-        private String resourceUri;
         private String source;
         private List<Version> versions;
 
         public Builder createdBy(String createdBy) {
             this.createdBy = createdBy;
-            return this;
-        }
-        public Builder dateCreated(String dateCreated) {
-            this.dateCreated = dateCreated;
-            return this;
-        }
-        public Builder dateModified(String dateModified) {
-            this.dateModified = dateModified;
             return this;
         }
         public Builder id(Integer id) {
@@ -140,10 +126,6 @@ public class File extends BlimpObject{
         }
         public Builder project(String project) {
             this.project = project;
-            return this;
-        }
-        public Builder resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
             return this;
         }
         public Builder source(String source) {

@@ -65,23 +65,6 @@ public class Profile extends BlimpObject {
     public Profile() {
         super();
     }
-    private Profile(Builder b) {
-        this.aimUsername = b.aimUsername;
-        this.avatar = b.avatar;
-        this.dateCreated = b.dateCreated;
-        this.dateModified = b.dateModified;
-        this.emailNotifications = b.emailNotifications;
-        this.facebookId = b.facebookId;
-        this.gravatarUrl = b.gravatarUrl;
-        this.gtalkUsername = b.gtalkUsername;
-        this.jobTitle = b.jobTitle;
-        this.lastIp = b.lastIp;
-        this.phone = b.phone;
-        this.skypeUsername = b.skypeUsername;
-        this.timezone = b.timezone;
-        this.twitterUsername = b.twitterUsername;
-        this.windowsLiveId = b.windowsLiveId;
-    }
 	public String getAimUsername() {
 		return aimUsername;
 	}
@@ -176,101 +159,5 @@ public class Profile extends BlimpObject {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-    public static class Builder {
-        private String aimUsername = null;
-        private String avatar = null;
-        private String dateCreated = null;
-        private String dateModified = null;
-        private String emailNotifications = null;
-        private String facebookId = null;
-        private String gravatarUrl = null;
-        private String gtalkUsername = null;
-        private String jobTitle = null;
-        private String lastIp = null;
-        private String phone = null;
-        private String skypeUsername = null;
-        private String timezone = null;
-        private String twitterUsername = null;
-        private String windowsLiveId = null;
-
-        public Builder aimUsername(String aimUsername) {
-            this.aimUsername = aimUsername;
-            return this;
-        }
-
-        public Builder avatar(String avatar) {
-            this.avatar = avatar;
-            return this;
-        }
-
-        public Builder dateCreated(String dateCreated) {
-            this.dateCreated = dateCreated;
-            return this;
-        }
-
-        public Builder dateModified(String dateModified) {
-            this.dateModified = dateModified;
-            return this;
-        }
-
-        public Builder emailNotifications(String emailNotifications) {
-            this.emailNotifications = emailNotifications;
-            return this;
-        }
-
-        public Builder facebookId(String facebookId) {
-            this.facebookId = facebookId;
-            return this;
-        }
-
-        public Builder gravatarUrl(String gravatarUrl) {
-            this.gravatarUrl = gravatarUrl;
-            return this;
-        }
-
-        public Builder gtalkUsername(String gtalkUsername) {
-            this.gtalkUsername = gtalkUsername;
-            return this;
-        }
-
-        public Builder jobTitle(String jobTitle) {
-            this.jobTitle = jobTitle;
-            return this;
-        }
-
-        public Builder lastIp(String lastIp) {
-            this.lastIp = lastIp;
-            return this;
-        }
-
-        public Builder phone(String phone) {
-            this.phone = phone;
-            return this;
-        }
-
-        public Builder skypeUsername(String skypeUsername) {
-            this.skypeUsername = skypeUsername;
-            return this;
-        }
-
-        public Builder timezone(String timezone) {
-            this.timezone = timezone;
-            return this;
-        }
-
-        public Builder twitterUsername(String twitterUsername) {
-            this.twitterUsername = twitterUsername;
-            return this;
-        }
-
-        public Builder windowsLiveId(String windowsLiveId) {
-            this.windowsLiveId = windowsLiveId;
-            return this;
-        }
-
-        public Profile build() {
-            return new Profile(this);
-        }
     }
 }

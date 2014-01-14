@@ -66,17 +66,12 @@ public class Project extends BlimpObject {
     }
     private Project(Builder b) {
         this.company = b.company;
-        this.dateCreated = b.dateCreated;
         this.dateDue = b.dateDue;
         this.dateFinished = b.dateFinished;
-        this.dateModified = b.dateModified;
         this.dateStarted = b.dateStarted;
         this.id = b.id;
         this.name = b.name;
-        this.resourceUri = b.resourceUri;
-        this.slug = b.slug;
         this.state = b.state;
-        this.stats = b.stats;
         this.team = b.team;
     }
 
@@ -190,25 +185,16 @@ public class Project extends BlimpObject {
     }
     public static class Builder {
         private String company;
-        private String dateCreated;
         private String dateDue;
         private String dateFinished;
-        private String dateModified;
         private String dateStarted;
         private Integer id;
         private String name;
-        private String resourceUri;
-        private String slug;
         private State state;
-        private Stats stats;
         private List<String> team;
 
         public Builder company(String company) {
             this.company = company;
-            return this;
-        }
-        public Builder dateCreated(String dateCreated) {
-            this.dateCreated = dateCreated;
             return this;
         }
         public Builder dateDue(String dateDue) {
@@ -217,10 +203,6 @@ public class Project extends BlimpObject {
         }
         public Builder dateFinished(String dateFinished) {
             this.dateFinished = dateFinished;
-            return this;
-        }
-        public Builder dateModified(String dateModified) {
-            this.dateModified = dateModified;
             return this;
         }
         public Builder dateStarted(String dateStarted) {
@@ -235,20 +217,8 @@ public class Project extends BlimpObject {
             this.name = name;
             return this;
         }
-        public Builder resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-            return this;
-        }
-        public Builder slug(String slug) {
-            this.slug = slug;
-            return this;
-        }
         public Builder state(State state) {
             this.state = state;
-            return this;
-        }
-        public Builder stats(Stats stats) {
-            this.stats = stats;
             return this;
         }
         public Builder team(List<String> team) {
@@ -259,5 +229,73 @@ public class Project extends BlimpObject {
         public Project build() {
             return new Project(this);
         }
+    }
+
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//
+//        Project project = (Project) o;
+//
+//        if (!company.equals(project.company)) return false;
+//        if (!dateCreated.equals(project.dateCreated)) return false;
+//        if (dateDue != null ? !dateDue.equals(project.dateDue) : project.dateDue != null) return false;
+//        if (dateFinished != null ? !dateFinished.equals(project.dateFinished) : project.dateFinished != null)
+//            return false;
+//        if (!dateModified.equals(project.dateModified)) return false;
+//        if (dateStarted != null ? !dateStarted.equals(project.dateStarted) : project.dateStarted != null) return false;
+//        if (!id.equals(project.id)) return false;
+//        if (!name.equals(project.name)) return false;
+//        if (!resourceUri.equals(project.resourceUri)) return false;
+//        if (!slug.equals(project.slug)) return false;
+//        if (state != project.state) return false;
+//        if (stats != null ? !stats.equals(project.stats) : project.stats != null) return false;
+//        if (!team.equals(project.team)) return false;
+//
+//        return true;
+//    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Project project = (Project) o;
+
+        if (!company.equals(project.company)) return false;
+        if (!dateCreated.equals(project.dateCreated)) return false;
+        if (dateDue != null ? !dateDue.equals(project.dateDue) : project.dateDue != null) return false;
+        if (dateFinished != null ? !dateFinished.equals(project.dateFinished) : project.dateFinished != null)
+            return false;
+        if (!dateModified.equals(project.dateModified)) return false;
+        if (dateStarted != null ? !dateStarted.equals(project.dateStarted) : project.dateStarted != null) return false;
+        if (!id.equals(project.id)) return false;
+        if (!name.equals(project.name)) return false;
+        if (!resourceUri.equals(project.resourceUri)) return false;
+        if (!slug.equals(project.slug)) return false;
+        if (state != project.state) return false;
+        if (stats != null ? !stats.equals(project.stats) : project.stats != null) return false;
+        if (!team.equals(project.team)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = company.hashCode();
+        result = 31 * result + dateCreated.hashCode();
+        result = 31 * result + (dateDue != null ? dateDue.hashCode() : 0);
+        result = 31 * result + (dateFinished != null ? dateFinished.hashCode() : 0);
+        result = 31 * result + dateModified.hashCode();
+        result = 31 * result + (dateStarted != null ? dateStarted.hashCode() : 0);
+        result = 31 * result + id.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + resourceUri.hashCode();
+        result = 31 * result + slug.hashCode();
+        result = 31 * result + state.hashCode();
+        result = 31 * result + (stats != null ? stats.hashCode() : 0);
+        result = 31 * result + team.hashCode();
+        return result;
     }
 }

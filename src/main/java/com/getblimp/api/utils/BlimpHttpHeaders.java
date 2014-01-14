@@ -30,7 +30,8 @@ package com.getblimp.api.utils;
 public enum BlimpHttpHeaders {
 	AUTHORIZATION("auth_header"),
 	APPID("appid_header"),
-	APPSECRET("appsecret_header");
+	APPSECRET("appsecret_header"),
+    CONTENTTYPE("content_type");
 
 	private String value;
 	

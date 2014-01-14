@@ -159,4 +159,40 @@ public class Comment extends BlimpObject{
             return new Comment(this);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Comment comment1 = (Comment) o;
+
+        if (!comment.equals(comment1.comment)) return false;
+        if (contentType != null ? !contentType.equals(comment1.contentType) : comment1.contentType != null)
+            return false;
+        if (dateCreated != null ? !dateCreated.equals(comment1.dateCreated) : comment1.dateCreated != null)
+            return false;
+        if (!dateModified.equals(comment1.dateModified)) return false;
+        if (!files.equals(comment1.files)) return false;
+        if (!id.equals(comment1.id)) return false;
+        if (!objectPk.equals(comment1.objectPk)) return false;
+        if (!resourceUri.equals(comment1.resourceUri)) return false;
+        if (!user.equals(comment1.user)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = comment.hashCode();
+        result = 31 * result + (contentType != null ? contentType.hashCode() : 0);
+        result = 31 * result + (dateCreated != null ? dateCreated.hashCode() : 0);
+        result = 31 * result + dateModified.hashCode();
+        result = 31 * result + files.hashCode();
+        result = 31 * result + id.hashCode();
+        result = 31 * result + objectPk.hashCode();
+        result = 31 * result + resourceUri.hashCode();
+        result = 31 * result + user.hashCode();
+        return result;
+    }
 }

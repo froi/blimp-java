@@ -64,15 +64,11 @@ public class Goal extends BlimpObject{
     }
     private Goal(Builder b) {
         this.assignedTo = b.assignedTo;
-        this.createdBy = b.createdBy;
-        this.dateCreated = b.dateCreated;
         this.dateDone = b.dateDone;
-        this.dateModified = b.dateModified;
         this.dateRejected = b.dateRejected;
         this.id = b.id;
         this.position = b.position;
         this.project = b.project;
-        this.resourceUri = b.resourceUri;
         this.state = b.state;
         this.title = b.title;
         this.userRejected = b.userRejected;
@@ -136,15 +132,11 @@ public class Goal extends BlimpObject{
     }
     public static class Builder {
         private String assignedTo;
-        private String createdBy;
-        private String dateCreated;
         private String dateDone;
-        private String dateModified;
         private String dateRejected;
         private Integer id;
         private Integer position;
         private String project;
-        private String resourceUri;
         private State state;
         private String title;
         private String userRejected;
@@ -153,20 +145,8 @@ public class Goal extends BlimpObject{
             this.assignedTo = assignedTo;
             return this;
         }
-        public Builder createdBy(String createdBy) {
-            this.createdBy = createdBy;
-            return this;
-        }
-        public Builder dateCreated(String dateCreated) {
-            this.dateCreated = dateCreated;
-            return this;
-        }
         public Builder dateDone(String dateDone) {
             this.dateDone = dateDone;
-            return this;
-        }
-        public Builder dateModified(String dateModified) {
-            this.dateModified = dateModified;
             return this;
         }
         public Builder dateRejected(String dateRejected) {
@@ -185,10 +165,6 @@ public class Goal extends BlimpObject{
             this.project = project;
             return this;
         }
-        public Builder resourceUri(String resourceUri) {
-            this.resourceUri = resourceUri;
-            return this;
-        }
         public Builder state(State state) {
             this.state = state;
             return this;
@@ -205,5 +181,47 @@ public class Goal extends BlimpObject{
         public Goal build() {
             return new Goal(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Goal goal = (Goal) o;
+
+        if (assignedTo != null ? !assignedTo.equals(goal.assignedTo) : goal.assignedTo != null) return false;
+        if (!createdBy.equals(goal.createdBy)) return false;
+        if (!dateCreated.equals(goal.dateCreated)) return false;
+        if (dateDone != null ? !dateDone.equals(goal.dateDone) : goal.dateDone != null) return false;
+        if (!dateModified.equals(goal.dateModified)) return false;
+        if (dateRejected != null ? !dateRejected.equals(goal.dateRejected) : goal.dateRejected != null) return false;
+        if (!id.equals(goal.id)) return false;
+        if (!position.equals(goal.position)) return false;
+        if (!project.equals(goal.project)) return false;
+        if (!resourceUri.equals(goal.resourceUri)) return false;
+        if (state != goal.state) return false;
+        if (!title.equals(goal.title)) return false;
+        if (userRejected != null ? !userRejected.equals(goal.userRejected) : goal.userRejected != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = assignedTo != null ? assignedTo.hashCode() : 0;
+        result = 31 * result + createdBy.hashCode();
+        result = 31 * result + dateCreated.hashCode();
+        result = 31 * result + (dateDone != null ? dateDone.hashCode() : 0);
+        result = 31 * result + dateModified.hashCode();
+        result = 31 * result + (dateRejected != null ? dateRejected.hashCode() : 0);
+        result = 31 * result + id.hashCode();
+        result = 31 * result + position.hashCode();
+        result = 31 * result + project.hashCode();
+        result = 31 * result + resourceUri.hashCode();
+        result = 31 * result + state.hashCode();
+        result = 31 * result + title.hashCode();
+        result = 31 * result + (userRejected != null ? userRejected.hashCode() : 0);
+        return result;
     }
 }
